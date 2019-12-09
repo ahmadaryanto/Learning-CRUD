@@ -15,8 +15,8 @@
 		<input type="text" name="name" class="form-control" value="Enter Your name">
 	</div>
 		<div class="form-group">
-		<label>Location</label>
-		<input type="text" name="Location" class="form-control" value="Enter Your location">
+		<label>location</label>
+		<input type="text" name="location" class="form-control" value="Enter Your location">
 	</div>
 		<div class="form-group">
 		<button type="submit" class="btn btn-primary" name="save" > Save</button>
