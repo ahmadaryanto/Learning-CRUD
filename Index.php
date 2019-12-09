@@ -7,8 +7,9 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
+	<?php require_once "process.php";?>
 	<div class="row justify-content-center">
-	<form action="" method="Post">
+	<form action="process.php" method="Post">
 		<div class="form-group">
 		<label>Name</label>
 		<input type="text" name="name" class="form-control" value="Enter Your name">
