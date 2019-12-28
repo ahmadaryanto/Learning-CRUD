@@ -8,6 +8,42 @@
 </head>
 <body>
 	<?php require_once "process.php";?>
+
+	<?php 
+		$mysqli = new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
+		$result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
+	?>
+			<div class="container">
+			<div class="row justify-content-center">
+			  <table class="table">
+			 	 <thead>
+			  		<tr>
+                 	  <th>Name</th>
+                   	  <th>Location</th>
+                      <th colspan="2">action</th>
+  			  	</tr>
+			  </thead>
+			  <?php
+			  	while($row = $result->fetch_assoc()): ?>
+			  	<tr>
+			  		<td><?php echo $row['name'];?> </td>
+			  		<td><?php echo $row['location'];?> </td>
+			  		<td></td>
+			  	</tr>
+			  <?php endwhile; ?>
+
+			</table>
+			</div>
+		</div>
+		
+<?php
+		function pre_r($array){
+			echo "<pre>";
+			print_r($array);
+			echo "</pre>";
+		}
+	?>
+
 	<div class="row justify-content-center">
 	<form action="process.php" method="Post">
 		<div class="form-group">
