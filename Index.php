@@ -8,12 +8,12 @@
 </head>
 <body>
 	<?php require_once "process.php";?>
-
+	<div class="container">
 	<?php 
 		$mysqli = new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
 		$result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
 	?>
-			<div class="container">
+		
 			<div class="row justify-content-center">
 			  <table class="table">
 			 	 <thead>
@@ -28,7 +28,12 @@
 			  	<tr>
 			  		<td><?php echo $row['name'];?> </td>
 			  		<td><?php echo $row['location'];?> </td>
-			  		<td></td>
+			  		<td>
+			  			<a href="index.php?edit=<?php echo $row['id'];?>"
+			  				class="btn btn-info">edit</a>
+			  			<a href="process.php?delete=<?php echo $row['id'];?>"
+			  				class="btn btn-danger">delete</a>
+			  		</td>
 			  	</tr>
 			  <?php endwhile; ?>
 
@@ -57,8 +62,8 @@
 		<div class="form-group">
 		<button type="submit" class="btn btn-primary" name="save" > Save</button>
 	</div>	
-
 	</form>
 </div>
+
 </html>
 </body>
