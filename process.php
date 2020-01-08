@@ -1,7 +1,7 @@
 <?php
  session_start();
  $mysqli = new mysqli('localhost', 'root','', 'crud') or die(mysql_error($mysqli));
-
+$update=false;
  $name='';
  $location='';
 
@@ -25,18 +25,19 @@
  	$mysqli->query("DELETE FROM data where id=$id") or die($mysqli->error());
 
  	$_SESSION['message'] ="Record has been deleted";
- 	$_SESSION['message'] ="danger";
+ 	$_SESSION['msg_type'] ="danger";
 
  	header("location:index.php");
  }
 
  if(isset($_GET['edit'])){
  	$id = $_GET['edit'];
- 	$result = $mysqli->query("SELECT * From data WHERE id=$id") or die($mysqli->error());
- 	if(count($result)==1){
+ 	$update = true;
+ 	$result = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error());
+ 	if($result->num_rows){
  		$row = $result->fetch_array();
  		$name = $row['name'];
- 		$location =$row['location'];
+ 		$location = $row['location'];
  	}
 
  }	
