@@ -12,7 +12,7 @@
 		<?php
 		if (isset($_SESSION['message'])): ?>
 
-		<div class="alert alert-danger<?=$_SESSION['msg_type']?>">
+		<div class="alert alert-<?=$_SESSION['msg_type']?>">
 
 			<?php
 				echo $_SESSION['message'];
@@ -20,7 +20,7 @@
 			?>
 
 		</div>
-	<?php endif 	?>
+	<?php endif ?>
 
 	<div class="container">
 
@@ -41,13 +41,13 @@
 			  <?php
 			  	while($row = $result->fetch_assoc()): ?>
 			  	<tr>
-			  		<td><?php echo $row['name'];?> </td>
-			  		<td><?php echo $row['location'];?> </td>
+			  		<td><?php echo $row['name'];?></td>
+			  		<td><?php echo $row['location'];?>	</td>
 			  		<td>
 			  			<a href="index.php?edit=<?php echo $row['id'];?>"
-			  				class="btn btn-info">edit</a>
+			  				class="btn btn-info">Edit</a>
 			  			<a href="process.php?delete=<?php echo $row['id'];?>"
-			  				class="btn btn-danger">delete</a>
+			  				class="btn btn-danger">Delete</a>
 			  		</td>
 			  	</tr>
 			  <?php endwhile; ?>
@@ -64,18 +64,18 @@
 		}
 	?>
 
-	<div class="row justify-content-center">
+<div class="row justify-content-center">
 	<form action="process.php" method="Post">
-		<div class="form-group">
+	<div class="form-group">
 		<label>Name</label>
-		<input type="text" name="name" class="form-control" value="Enter Your name">
+		<input type="text" name="name" class="form-control" value="<?php echo $name;?>" placeholder ="Enter Your name">
 	</div>
-		<div class="form-group">
+	<div class="form-group">
 		<label>location</label>
-		<input type="text" name="location" class="form-control" value="Enter Your location">
+		<input type="text" name="location" class="form-control" value="<?php echo $location;?>" placeholder ="Enter Your location">
 	</div>
-		<div class="form-group">
-		<button type="submit" class="btn btn-primary" name="save" > Save</button>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary" name="save" >Save</button>
 	</div>	
 	</form>
 </div>
