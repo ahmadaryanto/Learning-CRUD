@@ -7,20 +7,23 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
-	<?php require_once 'process.php'; ?>
-
-	<?php 
-	if (isset($_SESSION['message'])): ?>
-
-	<div class="alert alert	<?=$_SESSION['msg_type']?>">
+	<?php require_once "process.php";?>
 
 		<?php
-		$echo $_SESSION['message'];
-		unset($_SESSION['message']);
-		?>
-	</div>
-	<?php endif ?>
+		if (isset($_SESSION['message'])): ?>
+
+		<div class="alert alert-danger<?=$_SESSION['msg_type']?>">
+
+			<?php
+				echo $_SESSION['message'];
+				unset ($_SESSION['message']);
+			?>
+
+		</div>
+	<?php endif 	?>
+
 	<div class="container">
+
 	<?php 
 		$mysqli = new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
 		$result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
