@@ -6,10 +6,14 @@
  	$name= $_POST['name'];
  	$location= $_POST['location'];
 
- 	$_SESSION['message'] = "Record has been saved!";
- 	$_SESSION['msg_type'] = "Success";
+
 
  	$mysqli->query("INSERT INTO data (name,location) Values ('$name','$location')") or die ($mysqli->error);
+ 	 	$_SESSION['message'] = "Record has been saved!";
+ 	$_SESSION['msg_type'] = "Success";
+
+
+ 	header("location:index.php");
  }
 
  if(isset($_GET['delete'])){
@@ -18,4 +22,6 @@
 
  	$_SESSION['message'] ="Record has been deleted";
  	$_SESSION['message'] ="danger";
+
+ 	header("location:index.php");
  }
