@@ -76,10 +76,9 @@
 		<input type="text" name="location" class="form-control" value="<?php echo $location;?>" placeholder ="Enter Your location">
 	</div>
 	<div class="form-group">
-
 	<?php
 	if ($update == true):
-		?>
+	?>
 		<button type="submit" class="btn btn-info" name="update" >Update</button>
 		<?php else: ?>
 		<button type="submit" class="btn btn-primary" name="save" >Save</button>

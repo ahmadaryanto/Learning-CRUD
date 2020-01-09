@@ -1,10 +1,12 @@
 <?php
  session_start();
  $mysqli = new mysqli('localhost', 'root','', 'crud') or die(mysql_error($mysqli));
+
 $update=false;
+ $id=0;
  $name='';
  $location='';
- $id=0;
+
 
  if(isset($_POST['save'])){
  	$name= $_POST['name'];
@@ -40,6 +42,17 @@ $update=false;
  		$name = $row['name'];
  		$location = $row['location'];
  	}
+
+ if(isset($_POST['update'])){
+ 	$id = $_POST['id'];
+ 	$name = $_POST['name'];
+ 	$location= $_POST['location'];
+ 	$mysqli->query("UPDATE data set name='$name',location='$location' WHERE id=$id") or die($mysqli->error());
+
+ 	$_SESSION['message'] = "Record has been updated!";
+ 	$_SESSION['msg_type'] = "warning";
+ 		header("location:index.php");
+ } 
 
  }	
  
