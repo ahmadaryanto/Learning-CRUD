@@ -4,6 +4,7 @@
 $update=false;
  $name='';
  $location='';
+ $id=0;
 
  if(isset($_POST['save'])){
  	$name= $_POST['name'];

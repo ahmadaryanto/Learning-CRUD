@@ -65,7 +65,8 @@
 	?>
 
 <div class="row justify-content-center">
-	<form action="process.php" method="Post">
+	<form action="process.php" method="POST">
+		<input type="hidden" name="id" value="<?php echo $id; ?>">
 	<div class="form-group">
 		<label>Name</label>
 		<input type="text" name="name" class="form-control" value="<?php echo $name;?>" placeholder ="Enter Your name">
@@ -75,12 +76,12 @@
 		<input type="text" name="location" class="form-control" value="<?php echo $location;?>" placeholder ="Enter Your location">
 	</div>
 	<div class="form-group">
-		
+
 	<?php
-	if ($update == true):?>
+	if ($update == true):
+		?>
 		<button type="submit" class="btn btn-info" name="update" >Update</button>
 		<?php else: ?>
-
 		<button type="submit" class="btn btn-primary" name="save" >Save</button>
 	<?php endif; ?>
 	</div>	
